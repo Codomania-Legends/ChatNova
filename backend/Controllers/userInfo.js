@@ -1,3 +1,4 @@
+const { AD_INFO } = require("../MongoDB/Additional_info")
 const { USER_D } = require("../MongoDB/user_info")
 const { CheckForAnotherUser } = require("../Service/functions")
 
@@ -38,7 +39,14 @@ async function handleSignupUser( req , res ) {
         username,
         password
     } ) 
-    if( result ) return res.json( { msg : "User created" } )
+    if( result ) {
+        const pp = AD_INFO.create( {
+            "username" : username,
+            "profile_picture" : "default"
+        } )
+        if( !pp ) console.log("Errr")
+        return res.json( { msg : "User created" , profile : "default" } )
+    }
     else res.json( { msg : "Some error Occured please try again" } ) 
 }
 

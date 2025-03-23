@@ -3,9 +3,11 @@ const { Connect_MongoDB } = require("./MongoDB/connection")
 const { Login_Signup_Router } = require("./Routers/login_signup")
 const { ad_info_Router } = require("./Routers/ad_info")
 const app = express()
+const cors = require("cors")
 const PORT = 5000
 Connect_MongoDB()
 
+app.use( cors() )
 app.use( express.json() )
 app.use( express.urlencoded( { extended : false } ) )
 

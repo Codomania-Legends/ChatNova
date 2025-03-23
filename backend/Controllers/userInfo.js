@@ -2,7 +2,31 @@ const { USER_D } = require("../MongoDB/user_info")
 const { CheckForAnotherUser } = require("../Service/functions")
 
 async function handleLoginUser( req , res ) {
-    if( !req.body ) return res.json({"msg" : "Body is required"})
+    if( 
+        !req.body.username,
+        !req.body.password
+     ) return res.json({"msg" : "Body is required"})
+    const { username , password } = req.body
+    const userExists = await CheckForAnotherUser(username)
+    let result = await USER_D.find( {
+        username,
+        password
+    } )
+    if( result.length == 0 ) result = undefined
+    if( !result && userExists ) return res.json({msg : "Invalid username or password"})
+    else if( !result && !userExists ) return res.json({msg : "No user found Signup Please"})
+    else return res.json({msg : "Login Success"})
+}
+
+async function handleSignupUser( req , res ) {
+    if( 
+        !req.body.name,
+        !req.body.dob,
+        !req.body.age,
+        !req.body.gender,
+        !req.body.username,
+        !req.body.password
+     ) return res.json({"msg" : "Body is required"})
     const { name , dob , age , gender , username , password } = req.body
     const user = await CheckForAnotherUser(username)
     if( user ) return res.json( {"msg" : "Username already exists"} )
@@ -19,5 +43,6 @@ async function handleLoginUser( req , res ) {
 }
 
 module.exports = {
-    handleLoginUser
+    handleLoginUser,
+    handleSignupUser
 }

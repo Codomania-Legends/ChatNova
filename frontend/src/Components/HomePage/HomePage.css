@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.homeMain{
+    height: 100vh;
+    width: 100vw;
+    justify-content: left;
+}
+.leftList{
+    height: 100%;
+    width: 25%;
+    background-color: aqua;
+}
+.rightChat{
+    height: 100%;
+    width: 80%;
+    background-color: rgb(255, 195, 195);
+}
+.navbar{
+    background-color: blue;
+    height: 4em;
+    justify-content: space-evenly;
+}
+.profile{
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    background-color: rgb(168, 168, 168);
+}
+.searchInput{
+    height: 2.9em;
+    width: 15em;
+    border-radius: 3em;
+    padding-left: 1em;
+}

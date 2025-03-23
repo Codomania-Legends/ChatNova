@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import './index.css'
 import App from './App.jsx'
 import Login from './Components/User/Login.jsx'
-
+import Signup from './Components/User/Signup.jsx'
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>

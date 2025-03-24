@@ -6,7 +6,7 @@ async function setProfilePicture( req , res ){
     if( !req.body.username ) return res.json( { msg : "username is required" } )
     const { username , pp } = req.body 
     const result = AD_INFO.updateOne( 
-        { "username" : username } , 
+        { "username" : username },
         { $set : { profile_picture : pp } } 
     )
     if( !result ) return res.json({msg : "Some err occured while updating pp"})
@@ -36,19 +36,76 @@ async function getArchieveUsers( req , res ) {
 }
 
 async function setArchieveUsers( req , res ) {
-    if( !req.body.username ) return
+    if( !req.body.username ) return res.send("username required")
     const { username , user } = req.body
-    const result = await AD_INFO.findOneAndUpdate({"username" : username} , { $push : { "archieve_users" : user } })
+
+    const check = await AD_INFO.find( { "archieve_users.user" : user } )
+    if( check ) return res.json({msg : "Already in archieve"})
+
+    const result = await AD_INFO.findOneAndUpdate({"username" : username} , { $push : { "archieve_users" : {user} } })
     if( !result ) return res.json({msg:"Invalid Username"})
     return res.json({msg : "Archieve users updated Set"})
 }
 
 // Archieve Users
 
+// Blocked Users
+
+async function getBlockedUsers( req , res ) {
+    if( !req.query.username ) return
+    const { username } = req.query
+    const result = await AD_INFO.findOne({"username" : username})
+    if( !result ) return res.json({msg:"Invalid Username"})
+    const users = result.blocked_users
+    return res.json( {msg : "User found" , users : users } )
+}
+
+async function setBlockedUsers( req , res ) {
+    if( !req.body.username ) return res.send("username required")
+    const { username , user } = req.body
+
+    const check = await AD_INFO.find( { "blocked_users.user" : user } )
+    if( check ) return res.json({msg : "Already in blocked"})
+
+    const result = await AD_INFO.findOneAndUpdate({"username" : username} , { $push : { "blocked_users" : {user} } })
+    if( !result ) return res.json({msg:"Invalid Username"})
+    return res.json({msg : "Blocked users updated Set"})
+}
+
+// Blocked Users
+
+// Description
+
+async function getDescriptionOfUser( req , res ) {
+    if( !req.query.username ) return
+    const { username } = req.query
+    const result = await AD_INFO.findOne({"username" : username})
+    if( !result ) return res.json({msg:"Invalid Username"})
+    const users = result.description
+    return res.json( {msg : "User found" , description : users } )
+}
+
+async function setDescriptionOfUser( req , res ) {
+    if( !req.body.username ) return res.send("username required")
+    const { username , description } = req.body
+
+    const result = await AD_INFO.findOneAndUpdate({"username" : username} , { description : description })
+    if( !result ) return res.json({msg:"Invalid Username"})
+    return res.json({msg : "Description set successfully"})
+}
+
+// Description
+
 module.exports = {
     setProfilePicture,
     getProfilePicture,
 
     getArchieveUsers,
-    setArchieveUsers
+    setArchieveUsers,
+
+    getBlockedUsers,
+    setBlockedUsers,
+
+    getDescriptionOfUser,
+    setDescriptionOfUser
 }

@@ -12,13 +12,14 @@
     width: 25%;
     background-color: aqua;
 }
-.rightChat{
+.rightChat {
     height: 100%;
     width: 80%;
     background-color: rgb(255, 195, 195);
+    border-left: 2px solid white;
 }
 .navbar{
-    background-color: blue;
+    background-color: #7E5CAD;
     height: 4em;
     justify-content: space-evenly;
 }
@@ -34,9 +35,20 @@
     width: 60%;
     box-sizing: border-box;
     /* padding-left: 1em; */
+    background-color: #E1CCFF;
 }
 .searchInput{
     height: 2.9em;
     border-radius: 3em;
     padding-left: 1em;
+    background-color: #E1CCFF;
+    color: #868686;
+}
+.navbarpart2 {
+    height: 4em;
+    background-color: #7E5CAD;
+}
+.SomeBtn {
+    height: 2em;
+    background-color: aliceblue;
 }

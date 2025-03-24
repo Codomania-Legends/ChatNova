@@ -28,9 +28,15 @@
     border-radius: 50%;
     background-color: rgb(168, 168, 168);
 }
+.search-bar-home {
+    background: white;
+    border-radius: 10em;
+    width: 60%;
+    box-sizing: border-box;
+    /* padding-left: 1em; */
+}
 .searchInput{
     height: 2.9em;
-    width: 15em;
     border-radius: 3em;
     padding-left: 1em;
 }

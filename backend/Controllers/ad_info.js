@@ -12,6 +12,16 @@ async function setProfilePicture( req , res ){
     else res.json( {msg : "Profile picture updated"} )
 }
 
+async function getProfilePicture( req , res ) {
+    if( !req.params.username ) return
+    const username = req.params.username
+    const result = await AD_INFO.findOne({"username" : username})
+    if( !result ) return res.json({msg : "No user found"})
+    console.log(result)
+    return res.json({msg:"Profile Picture found" , profile_picture : `${result.profile_picture}`})
+}
+
 module.exports = {
-    setProfilePicture
+    setProfilePicture,
+    getProfilePicture
 }

@@ -34,3 +34,42 @@ to set the profile picture
 # /ad_info/pp/:username
 to get the profile picture of specific user
 <!-- nothing -->
+
+# /user
+to geṭ all the users in AD_INFO schema
+
+# /ad_info/archieve?username=
+to get the archieve users of specific user
+
+# /ad_info/archieve
+to set the archieve users of specific user
+<!-- 
+    {
+        username,
+        user
+    }
+-->
+
+# /ad_info/blocked?username=
+to get the blocked users of specific user
+
+# /ad_info/blocked
+to set the blocked users of specific user
+<!-- 
+    {
+        username,
+        user
+    }
+-->
+
+# /ad_info/description?username=
+to get the description users of specific user
+
+# /ad_info/description
+to set the description users of specific user
+<!-- 
+    {
+        username,
+        description
+    }
+-->

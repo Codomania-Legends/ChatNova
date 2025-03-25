@@ -1,5 +1,19 @@
 const { AD_INFO } = require("../MongoDB/Additional_info")
 
+// All Information
+    async function GetAllInfo(req , res) {
+        if( !req.params.username ) return res.send("")
+        const username = req.params.username
+        const result = await AD_INFO.find({username : username})
+        if(result){
+            res.json(result)
+        }
+        else{
+            res.json({msg : "No user found"})
+        }
+    }
+// 
+
 // Profile Picture
 async function setProfilePicture( req , res ){
     if( !req.body.pp ) return res.json( { msg : "Profile picture is required" } )
@@ -18,7 +32,6 @@ async function getProfilePicture( req , res ) {
     const username = req.params.username
     const result = await AD_INFO.findOne({"username" : username})
     if( !result ) return res.json({msg : "No user found"})
-    console.log(result)
     return res.json({msg:"Profile Picture found" , profile_picture : `${result.profile_picture}`})
 }
 // Profile Picture
@@ -29,7 +42,6 @@ async function getArchieveUsers( req , res ) {
     if( !req.query.username ) return
     const { username } = req.query
     const result = await AD_INFO.findOne({"username" : username})
-    console.log(result)
     if( !result ) return res.json({msg:"Invalid Username"})
     const users = result.archieve_users
     return res.json( {msg : "User found" , users : users } )
@@ -97,6 +109,8 @@ async function setDescriptionOfUser( req , res ) {
 // Description
 
 module.exports = {
+    GetAllInfo,
+
     setProfilePicture,
     getProfilePicture,
 

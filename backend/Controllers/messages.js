@@ -7,8 +7,14 @@ async function setMessage( req , res ) {
         !req.body.sender,
         !req.body.text
     ){ return res.json({msg : "Body is required"}) }
-    const { user1 , user2 , sender , text } = req.body
+    let { user1 , user2 , sender , text } = req.body
     let user = await MSG.findOne( { user1, user2 } )
+    if( !user ) {
+        user = await MSG.findOne( { user1 : user2, user2 : user1 } )
+        let temp = user1
+        user1 = user2
+        user2 = temp 
+    }
     
     if( !user || user.length == 0 ){
         const date = new Date()
@@ -46,9 +52,11 @@ async function getMessage( req , res ) {
     ){ return res.json({msg : "Users are required"}) }
 
     const { user1 , user2 } = req.query
-    let user = await MSG.findOne( { user1 , user2} )
+    let user = await MSG.findOne( { "user1" : user1 , "user2" : user2} )
+    if( !user ) user = await MSG.findOne( { user1 : user2, user2 : user1 } )
+    
     if( !user ) return res.json({msg : "No chats available"})
-    return res.json(user.msgs)
+    return res.json({msg:"user found" ,"msgs" : user.msgs})
 }
 
 module.exports = {

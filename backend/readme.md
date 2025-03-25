@@ -38,6 +38,9 @@ to get the profile picture of specific user
 # /user
 to geṭ all the users in AD_INFO schema
 
+# ad_info/all/:username
+to get all info of user
+
 # /ad_info/archieve?username=
 to get the archieve users of specific user
 
@@ -73,3 +76,15 @@ to set the description users of specific user
         description
     }
 -->
+
+# /msg/set
+to set the chat for user
+<!-- 
+    user1,
+    user2,
+    sender,
+    text
+-->
+
+# /msg/get?user1=&user2=
+to get all the chats of specific user

@@ -63,5 +63,20 @@ button.btnall {
     padding: 0.6em 1em;
     box-sizing: border-box;
 }
+.right-nav-div {
+    height: 100%;
+    background: aliceblue;
+}
+.right-nav-h-w{
+    width: 50%;
+    height: 100%;
+
+}
+.right-nav-profile{
+    background: aqua;
+}
+.right-nav-setting {
+    background: chocolate;
+}
 
 

@@ -88,3 +88,6 @@ to set the chat for user
 
 # /msg/get?user1=&user2=
 to get all the chats of specific user
+
+# /msg/getAll
+to get all the chats from db

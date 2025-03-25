@@ -17,6 +17,9 @@ const Schema = new mongoose.Schema( {
         type : String,
         required : true,
     },
+    "recentMsg" : {
+        type : String
+    },
     "msgs" : [ messageSchema ]
 } )
 

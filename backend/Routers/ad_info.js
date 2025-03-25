@@ -1,7 +1,10 @@
 const express = require("express")
-const { setProfilePicture, getProfilePicture, getArchieveUsers, setArchieveUsers, getBlockedUsers, setBlockedUsers, getDescriptionOfUser, setDescriptionOfUser } = require("../Controllers/ad_info")
+const { setProfilePicture, getProfilePicture, getArchieveUsers, setArchieveUsers, getBlockedUsers, setBlockedUsers, getDescriptionOfUser, setDescriptionOfUser, GetAllInfo } = require("../Controllers/ad_info")
 
 const ad_info_Router = express.Router()
+
+// All Info
+ad_info_Router.get( "/all/:username" , GetAllInfo )
 
 // Profile Picture
 ad_info_Router.post( "/pp" , setProfilePicture )

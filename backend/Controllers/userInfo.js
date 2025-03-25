@@ -45,6 +45,11 @@ async function handleSignupUser( req , res ) {
             "profile_picture" : "default"
         } )
         if( !pp ) console.log("Errr")
+        req.cookie("token" , {
+            name,
+            username,
+            password
+        })
         return res.json( { msg : "User created" , profile : "default.png" } )
     }
     else res.json( { msg : "Some error Occured please try again" } ) 

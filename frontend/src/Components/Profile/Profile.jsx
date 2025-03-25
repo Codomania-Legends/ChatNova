@@ -1,39 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./profile.css"
 
-function Profile({set , show}) {
+
+function Profile(props) {
+  let alldetails = props.more
+  let otherDetails = props.details
+
   return (
-    <div className={`Profile-bar flex ${ (show) ? "show-profile" : "hide-profile" }`}>
+    <div className={`Profile-bar flex ${ (props.show) ? "show-profile" : "hide-profile" }`}>
       <section className="section1-profile flex">
         <div className="profile-pic-div flex">
           <div className="profile-pic-image">
-            <img className='profile-img' src="image1.jpg" alt="profile picture" />
+          <img className='profile-img' src={`/${otherDetails?.profile_picture}`} alt="profile_picture" />
           </div>
         </div>
         <div className="username-profile flex">
-          <h1>Vidhi_Agrawal</h1>
+          <h1>{alldetails?.username}</h1>
         </div>
         <div className="description-profile">
-          <span className='description-text-profile'>Full stack developer, with passionate developing skills</span>
+          <span className='description-text-profile'>{alldetails?.description}</span>
         </div>
         <div className="name-profile">
-          <span className='name-text-profile'>Name : Vidhi</span>
+          <span className='name-text-profile'>Name : {alldetails?.name}</span>
         </div>
         <div className="age-profile">
-          <span className='age-text-profile'>Age : 20</span>
+          <span className='age-text-profile'>Age : {alldetails?.age}</span>
         </div>
         <div className="dob-profile">
-          <span className='dob-text-profile'>Date of Birth : 22/05/2005</span>
+          <span className='dob-text-profile'>Date of Birth : {alldetails?.dob}</span>
         </div>
         <div className="gender-profile">
-          <span className='gender-text-profile'>Gender : Female</span>
+          <span className='gender-text-profile'>Gender : {alldetails?.gender}</span>
         </div>
       </section>
       <section className="section2-profile flex">
         <div className="profile-profile">
           Profile
         </div>
-        <div onClick={() => set( (prev) => prev ? false : true )} className="back-profile flex">
+        <div onClick={() => props.set( (prev) => prev ? false : true )} className="back-profile flex">
           <i className='fa-solid fa-chevron-right'></i>
         </div>
       </section>

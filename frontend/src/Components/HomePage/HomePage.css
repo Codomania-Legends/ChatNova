@@ -15,7 +15,6 @@
 .rightChat {
     height: 100%;
     width: 80%;
-    background-color: rgb(255, 195, 195);
     border-left: 2px solid white;
 }
 .navbar {
@@ -23,14 +22,13 @@
     height: 8%;
     justify-content: space-evenly;
 }
-.profile{
-    height: 2em;
-    width: 2em;
+.profile-pic{
+    height: 65%;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     background-color: rgb(168, 168, 168);
 }
 .search-bar-home {
-    background: white;
     border-radius: 10em;
     width: 60%;
     box-sizing: border-box;
@@ -65,18 +63,38 @@ button.btnall {
 }
 .right-nav-div {
     height: 100%;
-    background: aliceblue;
 }
 .right-nav-h-w{
     width: 50%;
     height: 100%;
 
 }
-.right-nav-profile{
-    background: aqua;
+.right-nav-profile {
+    justify-content: start;
+    gap: 1em;
+}
+.rnav-username {
+    height: 100%;
+    font-size: large;
+}
+.rnav-image {
+    margin-left: 2em;
 }
 .right-nav-setting {
-    background: chocolate;
+    justify-content: end;
+    padding-right: 1em;
+    font-size: large;
+}
+.rnav-search-icon.flex {
+    height: 100%;
+    width: 7%;
+}
+.rnav-3dot-icon.flex {
+    height: 100%;
+    width: 7%;
 }
 
-
+img.profile-picture-user-left {
+    height: 100%;
+    border-radius: 50%;
+}

@@ -4,7 +4,6 @@ main.Chats {
 .Chat-background {
     height: 100%;
 
-    background: antiquewhite;
     
 }
 .ChatImg {
@@ -14,7 +13,7 @@ main.Chats {
     flex-direction: column;
 }
 .chat {
-    background: blanchedalmond;
+    background-color: white;
     border-radius: 10em;
     padding: 0.6em 1em;
     margin: 0.3em 0em;
@@ -25,6 +24,8 @@ main.Chats {
     justify-content: start;
     height: 100%;
     width: 95%;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 #right{
     justify-content: end;

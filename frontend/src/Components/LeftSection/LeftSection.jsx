@@ -5,7 +5,7 @@ import UserList from '../UserList/UserList'
 import { useLocation } from 'react-router-dom'
 import axios from "axios"
 
-function LeftSection() {
+function LeftSection({pictures}) {
     const [ showProfile , setShowProfile ] = useState(false)
     const [ moreDetails , setMoreDetails ] = useState()
     const [ userInfo , setUserInfo ] = useState()
@@ -22,7 +22,7 @@ function LeftSection() {
     } , [] )
   return (
     <div className='leftList'>
-        <Profile more={moreDetails} details={userInfo} set={setShowProfile} show={showProfile} />
+        <Profile pictures={pictures} more={moreDetails} details={userInfo} set={setShowProfile} show={showProfile} />
 
         {/* left side */}
         

@@ -11,6 +11,18 @@ function Profile(props) {
   let alldetails = props.more
   let otherDetails = props.details
 
+  async function handleSetProfile( pp ) {
+    pp = pp.split("/")[1]
+    console.log(pp)
+    console.log(otherDetails.username)
+    const result = await axios.post( "http://localhost:5000/ad_info/pp" , {
+      pp : pp,
+      username : otherDetails.username
+    } )
+    alert(result.data.msg)
+    window.location.reload()
+  }
+
   return (
     <div className={`Profile-bar flex ${ (props.show) ? "show-profile" : "hide-profile" }`}>
       <section className="section1-profile flex">
@@ -21,10 +33,12 @@ function Profile(props) {
             <img className='profile-img' src={`/${otherDetails?.profile_picture}`} alt="profile_picture" />
             <div className={`changeProfilePicture ${(showImages) ? "showDiv-profile" : "hideDiv-profile"}`}>
               {
-                props.pictures.map( (v , i) => {
-                  if(v != otherDetails?.profile_picture){
+                props.pictures?.map( (v , i) => {
+                  if(v.split("/")[1] != otherDetails?.profile_picture){
                     return (
-                      <img src={v} key={i} id={`image${i++}`} className={`changePictures ${(showImages && i <= 11) ? "showImages-profile" : (showMoreImages && showImages && i > 10) ? "moveImages" : "hideImages-profile"}`}></img>
+                      <img onClick={() => {
+                        handleSetProfile(v)
+                      }} src={v} key={i} id={`image${i++}`} className={`changePictures ${(showImages && i <= 11) ? "showImages-profile" : (showMoreImages && showImages && i > 10) ? "moveImages" : "hideImages-profile"}`}></img>
                     )
                   }
                 } )

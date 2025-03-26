@@ -8,7 +8,7 @@ main.Chats {
 }
 .ChatImg {
     height: 100%;
-    background-image: url(/src/Components/Chat/image-background-chat.png);
+    background-image: url(/chatImages/image-background-chat.png);
     background-size: cover;
     flex-direction: column;
 }

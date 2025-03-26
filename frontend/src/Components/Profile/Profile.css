@@ -1,5 +1,5 @@
 .Profile-bar {
-    width: 24%;
+    width: 25%;
     position: absolute;
     background-image: linear-gradient(0deg, #7554B6, #C4A9F6);
     height: 100%;
@@ -27,11 +27,15 @@ section.section1-profile {
     box-sizing: border-box;
     padding: 0.2em;
     background: #80589D;
+    position: relative;
+    z-index: 9;
 }
 .profile-img {
     height: 100%;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
+    position: relative;
+    z-index: 10;
 }
 .username-profile{
     width: 100%;
@@ -86,4 +90,85 @@ section.section3-profile {
     left: 0;
     transition: 1s;
     border-radius: 0;
+}
+
+.fa-solid.fa-pen-to-square {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+.changeProfilePicture {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: -1;
+}
+
+.changePictures {
+    position: absolute;
+    width: 40%;
+    height: 40%;   
+}
+
+.hideImages-profile {
+    height: 40%;
+    width: 40%;
+    top: 10%;
+    left: 10%;
+    transition: 1s;
+}
+.showDiv-profile{
+    z-index: 2;
+}
+.showImages-profile , .moveImages {
+    height: 40%;
+    transition: transform 1s;
+    width: 40%;
+    aspect-ratio: 1 / 1;
+}
+.moveImages{
+    z-index: 5;
+}
+.showImages-profile:nth-child(1){ transform: translate(260%, 0); }
+.showImages-profile:nth-child(2){ transform: translate(270%, 110%); }
+.showImages-profile:nth-child(3){ transform : translate(230%, 220%) }
+.showImages-profile:nth-child(4){ transform: translate(-100%, 0%); }
+.showImages-profile:nth-child(5){ transform: translate(-110%, 110%); }
+.showImages-profile:nth-child(6){ transform: translate(-75%, 220%); }
+.showImages-profile:nth-child(7){ transform: translate(20%, 275%) }
+.showImages-profile:nth-child(8){ transform: translate(130%, 280%) }
+.showImages-profile:nth-child(9){ transform: translate(-25%, -80%); }
+.showImages-profile:nth-child(10){ transform: translate(185%, -80%); }
+
+.moveImages:nth-child(11){ transform: translate(260%, 0); }
+.moveImages:nth-child(12){ transform: translate(-110%, 110%); }
+.moveImages:nth-child(13){ transform: translate(20%, 275%) }
+.moveImages:nth-child(14){ transform: translate(-100%, 0%); }
+
+
+.movePen {
+    top: -20%;
+    left: 55%;
+    transition: 1s;
+}
+
+.noMovePen{
+    right: 0%;
+    top: 0;
+    transition: 2s;
+}
+
+.fa-solid.fa-angles-right{
+    position: absolute;
+    top: -20%;
+    left: 35%;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.hideMoreProfile{
+    display: none;
 }

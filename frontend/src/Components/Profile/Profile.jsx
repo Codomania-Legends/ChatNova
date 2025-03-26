@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import "./profile.css"
-
+import axios from "axios"
 
 function Profile(props) {
+  useEffect( async () => {
+    await axios.get("http://localhost:5000/user")
+  } , [] )
+  const [ showImages , setShowImages ] = useState(false)
+  const [ showMoreImages , setShowMoreImages ] = useState(false)
   let alldetails = props.more
   let otherDetails = props.details
 
@@ -10,8 +15,21 @@ function Profile(props) {
     <div className={`Profile-bar flex ${ (props.show) ? "show-profile" : "hide-profile" }`}>
       <section className="section1-profile flex">
         <div className="profile-pic-div flex">
-          <div className="profile-pic-image">
-          <img className='profile-img' src={`/${otherDetails?.profile_picture}`} alt="profile_picture" />
+          <div className="profile-pic-image flex">
+            <i onClick={() => setShowMoreImages(!showMoreImages)} className={showImages ? "fa-solid fa-angles-right" : "hideMoreProfile "}></i>
+            <i className={`fa-solid fa-pen-to-square ${showImages ? "movePen" : "noMovePen"}`} onClick={() => setShowImages(!showImages)}></i>
+            <img className='profile-img' src={`/${otherDetails?.profile_picture}`} alt="profile_picture" />
+            <div className={`changeProfilePicture ${(showImages) ? "showDiv-profile" : "hideDiv-profile"}`}>
+              {
+                props.pictures.map( (v , i) => {
+                  if(v != otherDetails?.profile_picture){
+                    return (
+                      <img src={v} key={i} id={`image${i++}`} className={`changePictures ${(showImages && i <= 11) ? "showImages-profile" : (showMoreImages && showImages && i > 10) ? "moveImages" : "hideImages-profile"}`}></img>
+                    )
+                  }
+                } )
+              }
+            </div>
           </div>
         </div>
         <div className="username-profile flex">

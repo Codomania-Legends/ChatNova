@@ -98,3 +98,13 @@ img.profile-picture-user-left {
     height: 100%;
     border-radius: 50%;
 }
+
+.noSelectedChat {
+    background-image: url(/chatImages/image-background-chat.png);
+    height: 100%;
+    width: 75%;
+    background-size: cover;
+}
+.selectChatText{
+    text-shadow: 4px 4px 4px rgb(0 0 0 / 25%);
+}

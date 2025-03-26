@@ -3,9 +3,9 @@ const mongoose = require("mongoose")
 const messageSchema = new mongoose.Schema({
     "sender" : {type : String},
     "text" : { type : String },
-    // "read" : { type : Boolean },
     "time" : { type : String },
-    "date" : { type : String }
+    "date" : { type : String },
+    "read" : {type : Boolean}
 })
 
 const Schema = new mongoose.Schema( {

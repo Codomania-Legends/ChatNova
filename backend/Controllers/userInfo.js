@@ -16,7 +16,7 @@ async function handleLoginUser( req , res ) {
     if( result.length == 0 ) result = undefined
     if( !result && userExists ) return res.json({msg : "Invalid username or password"})
     else if( !result && !userExists ) return res.json({msg : "No user found Signup Please"})
-    else return res.json({msg : "Login Success"})
+    else return res.json({msg : "Login Success" , redirect : true})
 }
 
 async function handleSignupUser( req , res ) {
@@ -42,14 +42,9 @@ async function handleSignupUser( req , res ) {
     if( result ) {
         const pp = AD_INFO.create( {
             "username" : username,
-            "profile_picture" : "default"
+            "profile_picture" : "default.png"
         } )
         if( !pp ) console.log("Errr")
-        req.cookie("token" , {
-            name,
-            username,
-            password
-        })
         return res.json( { msg : "User created" , profile : "default.png" } )
     }
     else res.json( { msg : "Some error Occured please try again" } ) 

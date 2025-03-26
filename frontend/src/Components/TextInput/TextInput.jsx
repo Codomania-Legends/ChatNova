@@ -27,7 +27,7 @@ function TextInput({user1 , user2 , setReload}) {
             <div className="chat-icon flex"><i className="fa-regular fa-square-plus"></i></div>
         </div>
 
-        <form onSubmit={handleSubmitChat} className='flex'>
+        <form onSubmit={handleSubmitChat} className='form-textInput flex'>
             {/* input div */}
             <div className='chat-text-input flex'>
                 <div className='write-chat flex'>

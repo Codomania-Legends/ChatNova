@@ -43,7 +43,7 @@ input.chat-input::placeholder{
     color: #CAA6E4;
 }
 
-form.flex {
+.form-textInput.flex {
     width: 90%;
     height: 100%;
 }

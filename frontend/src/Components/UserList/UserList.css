@@ -1,8 +1,9 @@
 .UserLi{
     height: 85%;
     overflow: auto;
-    scrollbar-color: #555 #00000000;
-    scrollbar-width: 5px;
+}
+.UserLi::-webkit-scrollbar{
+    display: none;
 }
 .Person, .border-Person {
     height: 11%;
@@ -40,11 +41,33 @@
     font-size: large;
     height: 100%;
     align-items: start;
+    flex-direction: column;
 }
-.username {
-    padding-top: 5px;
+span.recentMsg {
+    font-size: small;
 }
 
+.send{
+    color: #006800;
+}
+.received{
+    color: #740000;
+}
+.new-chat{
+    color: white;
+}
 
+.readUnread {
+    flex: 1 1;
+    justify-content: end;
+    height: 100%;
+    margin-right: 5%;
+}
 
-
+.circleUnRead.flex {
+    aspect-ratio: 1 / 1;
+    height: 50%;
+    border-radius: 50%;
+    background: #800000;
+    color: white;
+}

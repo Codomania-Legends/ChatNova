@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
       <Route path='/:username' element = { <HomePage /> } />
-      <Route path='/login' element = { <Login /> } />
+      <Route path='/' element = { <Login /> } />
       <Route path="/signup" element = { <Signup /> } />
       <Route path='/chat/:user1/:user2' element={<ChatMainComp />}></Route>
     </Routes>

@@ -1,15 +1,20 @@
 import background from "./background.jpg"
 import "./style.css"
 import React, { useState } from 'react'
+import {useNavigate} from "react-router-dom"
 import axios from "axios"
 
 function Login() {
+    const navigate = useNavigate()
     const [ username , setUsername ] = useState("")
     const [ password , setPassword ] = useState("")
     async function handleSubmit(e) {
         e.preventDefault()
         const result = await axios.post( "http://localhost:5000/user/login" , { username , password } )
         alert(result.data.msg)
+        if( result.data.redirect ){
+            navigate(`/${username}`)
+        }
     }
   return (
     <>
@@ -39,7 +44,7 @@ function Login() {
                     <span className="forgot-password-login">
                         Forgot password?
                     </span>
-                    <span className="new-user-login">
+                    <span onClick={() => navigate("/signup")} className="new-user-login">
                         New user
                     </span>
                 </div>
